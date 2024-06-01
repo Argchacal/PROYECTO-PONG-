@@ -28,6 +28,20 @@ public class Ball : MonoBehaviour
             ballRb.velocity *= velocityMultiplier;
         }    
     }
+
+    private void OnTriggerEnter2D(Collider2D collision)
+    {
+        if (collision.gameObject.CompareTag("goal1"))
+        {
+            GameManager.Instance.Paddle2Score();
+        }
+        else
+        {
+            GameManager.Instance.Paddle1Score();
+        }
+        GameManager.Instance.Restart();
+        Launch();
+    }
     // Update is called once per frame
     void Update()
     {
